@@ -1,0 +1,98 @@
+{% extends 'Navbar/ProjectNavbar.html' %}
+
+{% block body %}
+<!-- Register Form -->
+<div class="container mt-5 pt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-4 bg-white rounded shadow-sm py-5 px-3 mx-auto" style="box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;">
+            <h1 class="text-center mb-4 fw-bold fs-2 text-dark">Create an Account</h1>
+
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'info' %}
+                        <p style="color: #5D7A9E">{{ message }}</p>
+                    {% elif message.tags == 'error' %}
+                        <p style="color: red">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <!-- Register Form -->
+            <form method="POST" action="{% url 'UserRegisterLogic' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row justify-content-center">
+                      <label for="username" style="color: #5D7A9E width: 200px; height: 50px; padding: 0px; border-radius: 5px; background-color: #f9f9f9">Username:</label>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+
+
+                        <input type="text" name="username" id="username" placeholder="Username" style="width: 200px; height: 50px; padding: 0px; border-radius: 5px; background-color: #f9f9f9; box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <label for="first_name" style="color: #5D7A9E;">First Name:</label>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+
+
+                        <input type="text" name="first_name" id="first_name" placeholder="First Name" style="width: 200px; height: 50px; padding: 10px; border-radius: 5px; background-color: #f9f9f9; box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                      <label for="last_name" style="color: #5D7A9E;">Last Name:</label>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+
+
+                        <input type="text" name="last_name" id="last_name" placeholder="Last Name" style="width: 200px; height: 50px; padding: 10px; border-radius: 5px; background-color: #f9f9f9; box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                      <label for="email" style="color: #5D7A9E;">Email:</label>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+
+
+                        <input type="email" name="email" id="email" placeholder="Email Address" style="width: 200px; height: 50px; padding: 10px; border-radius: 5px; background-color: #f9f9f9; box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <label for="password1" style="color: #5D7A9E;">Password:</label>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+
+
+                        <input type="password" name="password" id="password" placeholder="Password" style="width: 200px; height: 50px; padding: 10px; border-radius: 5px; background-color: #f9f9f9; box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;">
+                    </div>
+                </div>
+<div class="row justify-content-center">
+    <label for="password" style="color: #5D7A9E;">Confirm Password:</label>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+
+
+                        <input type="password" name="password1" id="password1" placeholder="Renter Password" style="width: 200px; height: 50px; padding: 10px; border-radius: 5px; background-color: #f9f9f9; box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 text-center mb-3 py-2 fw-bold fs-4" style="background-color: #5D7A9E; color: white; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;">Create Account</button>
+
+                <p class="text-center text-gray">By signing up, you agree to our <a href="#" class="fw-bold" style="color: #5D7A9E;">Terms of Service and Privacy Policy.</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let inputs = document.querySelectorAll("input");
+
+    inputs.forEach((input) => {
+        input.addEventListener("focus", () => {
+            input.style.background = "#f2f2f2";
+            input.style.boxShadow = "rgba(0, 0, 0, 0.1) 0 5px 10px";
+        });
+
+        input.addEventListener("blur", () => {
+            input.style.background = "#f9f9f9";
+            input.style.boxShadow = "rgba(0, 0, 0, 0.1) 0 2px 4px";
+        });
+    });
+</script>
+{% endblock %}

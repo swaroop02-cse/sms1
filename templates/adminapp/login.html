@@ -1,0 +1,49 @@
+{% extends 'Navbar/ProjectNavbar.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+
+<body>
+  {% block body %}
+  <!-- Login Form -->
+  <div class="container mt-5 pt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <h1 class="text-center mb-4">Login</h1>
+        
+        <!-- Login Form -->
+        <form method="POST" action="{% url 'userloginpage' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" placeholder="Enter your username...">
+          </div>
+
+         <div class="mb-3">
+  <label for="password">Password:</label>
+  <input type="password" name="password" id="password" placeholder="Enter your password...">
+</div>
+
+
+          <button type="submit" class="btn btn-primary">Login</button>
+
+          <!-- Display error messages -->
+          {% if form.errors %}
+            <ul>
+              {% for field in form %}
+                {% if field.errors %}
+                  <li>{{ field.errors }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</body>
+</html>
